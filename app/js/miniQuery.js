@@ -9,9 +9,9 @@ var SweetSelector = (function() {
         return document.getElementById(target);
       }else if(target[0] === "."){
         target = target.substring(1)
-        return document.getElementsByClassName(target)[0]
+        return document.getElementsByClassName(target)
       }else{
-        return document.getElementsByTagName(target)[0];
+        return document.getElementsByTagName(target);
       }
     }
   };
@@ -37,11 +37,11 @@ var DOM = (function(){
 var EventDispatcher = (function(){
   return{
     on:function(target,event,action){
-      SweetSelector.select(target).addEventListener(event,action)
+      SweetSelector.select(target)[0].addEventListener(event,action)
     },
     trigger:function(target,event){
       var e = new Event(event)
-      SweetSelector.select(target).dispatchEvent(e);
+      SweetSelector.select(target)[0].dispatchEvent(e);
     }
   }
 })()
