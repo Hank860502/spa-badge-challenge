@@ -4,6 +4,7 @@
   <title>SPABadge</title>
 <script src="js/miniQuery.js"></script>
 <script src="js/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
 </head>
 <body>
   <div class="container">
@@ -16,5 +17,11 @@
         <li><a href="sample-page.html">Sample Page (to see what the badges view should look like)</a></li>
       </ul>
   </div>
+  <script id="teachers" type="text/x-handlebars-template">
+  {{#each teachers}}
+    <p>{{name}}</p>
+  {{/each}}
+  </script>
+  <div class="content-placeholder"></div>
 </body>
 </html>
