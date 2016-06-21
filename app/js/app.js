@@ -8,8 +8,13 @@ $.ready(function(){
       data: 'json'
     }).then(function(data){
       var walker = JSON.parse(data)
+      var badges = walker.badges
+      var teacherPhrase = []
+      for(var i=0; i < badges.length ;i++){
+        teacherPhrase.push(badges[i].phrase);
+      }
+      var textnode = document.createTextNode(teacherPhrase)
       debugger;
-      var textnode = document.createTextNode(walker)
       $.select('a')[0].parentElement.appendChild(textnode);
     })
   })
