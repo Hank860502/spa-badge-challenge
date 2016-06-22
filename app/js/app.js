@@ -30,7 +30,6 @@ $.ready(function(){
 
           var theTemplateScript = $.select("#form").innerHTML;
           var theTemplate = Handlebars.compile(theTemplateScript);
-          debugger;
           // var text = theTemplateScript.split()
           // var context ={ teachers:teachers }
           // var theCompiledHtml = theTemplate(context);
@@ -38,7 +37,7 @@ $.ready(function(){
           // var script = document.createTextNode(text)
           var node = document.createElement("br")
           $.select('a')[idNum-1].parentElement.appendChild(node);
-          $.select('a')[idNum-1].parentElement.innerHTML = theTemplateScript.split();
+          $.select('.appendForm')[idNum-1].innerHTML = theTemplateScript.split();
         })
       })
     })
