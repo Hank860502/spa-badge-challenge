@@ -37,8 +37,10 @@ var DOM = (function(){
 var EventDispatcher = (function(){
   return{
     on:function(target,event,action){
-      SweetSelector.select(target)[0].addEventListener(event,action)
-    },
+      var tag = SweetSelector.select(target)
+      for(var i=0; i<tag.length; i++)
+        tag[i].addEventListener(event,action)
+      },
     trigger:function(target,event){
       var e = new Event(event)
       SweetSelector.select(target)[0].dispatchEvent(e);
