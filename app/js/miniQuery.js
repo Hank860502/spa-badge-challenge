@@ -57,18 +57,24 @@ var AjaxWrapper = (function(){
     request:function(info){
       var link = info.url;
       var linkType = info.type;
+      var data = info.data
       return new Promise(function(resolve, reject) {
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.open(linkType, link);
+      if(linkType === "GET"){
+          xmlhttp.send();
+        }else if(linkType === "POST"){
+          xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xmlhttp.send(data)
+        }
         xmlhttp.onload = function() {
-          if (xmlhttp.status == 200) {
+          if (xmlhttp.status >= 200 && xmlhttp.status < 300) {
           resolve(xmlhttp.responseText);
           }
           else{
           reject('something else other than 200 was returned');
           }
         };
-      xmlhttp.send();
       })
     }
   }

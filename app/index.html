@@ -60,8 +60,8 @@
 
         <div class="add-badge">
           <h3> Add a Badge: </h3>
-          <form action="#">
-            <input type="hidden" name="user_id" value="5" />
+          <form action="http://spa-badge-api.herokuapp.com/teachers/{{teacher.id}}/badges" id="addbadges">
+            <input type="hidden" name="user_id" value="{{teacher.id}}" />
             <input type="text" name="content" />
             <input type="image" src="img/add_button.png" alt="Add Slogan" />
           </form>

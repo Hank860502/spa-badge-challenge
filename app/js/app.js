@@ -38,10 +38,26 @@ $.ready(function(){
           var node = document.createElement("br")
           $.select('a')[idNum-1].parentElement.appendChild(node);
           $.select('.appendForm')[idNum-1].innerHTML = theCompiledHtml;
-          // $.select('#form').innerHTML= theCompiledHtml;
 
+          $.on('form', 'submit', function(e){
+            e.preventDefault();
+            var url = this.getAttribute("action")
+            var phrase = this.children[1].value
+            var teacher_id = this.children[0].value
+            $.request({
+              url: url,
+              type: "POST",
+              data: "phrase=" + phrase +"&votes=" + "0" + "&teacher_id=" + teacher_id
+            }).then(function(data){
+              debugger
+            })
+
+          })
         })
       })
+
+
+
     })
   })
 
