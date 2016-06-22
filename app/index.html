@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-  <title>SPABadge</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<title>SPABadge</title>
 <script src="js/miniQuery.js"></script>
 <script src="js/app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
@@ -13,38 +13,62 @@
     </div>
 
     <h1> SF Teachers </h1>
-      <ul>
-        <script id="teachers" type="text/x-handlebars-template">
-          {{#each teachers}}
-            <li><a href={{id}}>{{name}}</li></a>
-            <div class="appendForm">
-            </div>
-          {{/each}}
-        </script>
-        <div class="content-placeholder"></div>
-        <li><a href="sample-page.html">Sample Page (to see what the badges view should look like)</a></li>
-      </ul>
+    <ul>
+      <script id="teachers" type="text/x-handlebars-template">
+        {{#each teachers}}
+        <li><a href={{id}}>{{name}}</li></a>
+        <div class="appendForm">
+          <!-- form goes in here -->
+        </div>
+        {{/each}}
+      </script>
+      <div class="content-placeholder"></div>
+      <!--    <li><a href="sample-page.html">Sample Page (to see what the badges view should look like)</a></li> -->
+    </ul>
   </div>
 
 </body>
 </html>
 
-  <script id="form" type="text/x-handlebars-template">
-      <h1>Words To Be Remembered By</h1>
-      <div class="show-user">
-        <h2> Walker's Badges </h2>
+<script id="form" type="text/x-handlebars-template">
+  <h1>Words To Be Remembered By</h1>
+  <div class="show-user">
+    <h2> {{teacher.name}} Badges </h2>
+    <div id="1" class="slogan">
+      {{#each teacher.badges}}
+      <div class="body">{{this.phrase}}</div>
+      <div class="vote-on">
+        <form action="#">
+          <input type="hidden" name="slogan_id" value=1>
+          <input type="hidden" name="vote_type" value="up">
+          <button class="up" type="submit" name="submit">
+            <img src="img/upvote.gif" alt="upvote_image" />
+          </button>
 
-        <div id="1" class="slogan">
-          <div class="body">1) DBC Guru</div>
-          <div class="vote-on">
             <form action="#">
               <input type="hidden" name="slogan_id" value=1>
-              <input type="hidden" name="vote_type" value="up">
-              <button class="up" type="submit" name="submit">
-                <img src="img/upvote.gif" alt="upvote_image" />
+              <input type="hidden" name="vote_type" value="down">
+              <button class="down" type="submit" name="submit">
+                <img src="img/downvote.gif" alt="downvote_image" />
               </button>
-              </form>
-            </div>
+            </form>
+          <div class="points">
+          {{this.votes}}
           </div>
+        {{/each}}
         </div>
-    </script>
+
+        <div class="add-badge">
+          <h3> Add a Badge: </h3>
+          <form action="#">
+            <input type="hidden" name="user_id" value="5" />
+            <input type="text" name="content" />
+            <input type="image" src="img/add_button.png" alt="Add Slogan" />
+          </form>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+</script>

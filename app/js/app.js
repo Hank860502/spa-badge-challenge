@@ -31,13 +31,15 @@ $.ready(function(){
           var theTemplateScript = $.select("#form").innerHTML;
           var theTemplate = Handlebars.compile(theTemplateScript);
           // var text = theTemplateScript.split()
-          // var context ={ teachers:teachers }
-          // var theCompiledHtml = theTemplate(context);
+          var context ={ teacher:teacher }
+          var theCompiledHtml = theTemplate(context);
           // var textnode = document.createTextNode(teacherPhrase)
           // var script = document.createTextNode(text)
           var node = document.createElement("br")
           $.select('a')[idNum-1].parentElement.appendChild(node);
-          $.select('.appendForm')[idNum-1].innerHTML = theTemplateScript.split();
+          $.select('.appendForm')[idNum-1].innerHTML = theCompiledHtml;
+          // $.select('#form').innerHTML= theCompiledHtml;
+
         })
       })
     })
