@@ -49,7 +49,12 @@ $.ready(function(){
               type: "POST",
               data: "phrase=" + phrase +"&votes=" + "0" + "&teacher_id=" + teacher_id
             }).then(function(data){
-              debugger
+              var newBadge = JSON.parse(data)
+              var theTemplateScript = $.select("#newBadge").innerHTML;
+              var theTemplate = Handlebars.compile(theTemplateScript);
+              var context ={ newBadge:newBadge }
+              var theCompiledHtml = theTemplate(context);
+              $.select('.traci').innerHTML = theCompiledHtml;
             })
 
           })

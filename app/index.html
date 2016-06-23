@@ -20,6 +20,7 @@
         <div class="appendForm">
           <!-- form goes in here -->
         </div>
+        <div class="traci"></div>
         {{/each}}
       </script>
       <div class="content-placeholder"></div>
@@ -44,20 +45,19 @@
           <button class="up" type="submit" name="submit">
             <img src="img/upvote.gif" alt="upvote_image" />
           </button>
-
-            <form action="#">
-              <input type="hidden" name="slogan_id" value=1>
-              <input type="hidden" name="vote_type" value="down">
-              <button class="down" type="submit" name="submit">
-                <img src="img/downvote.gif" alt="downvote_image" />
-              </button>
-            </form>
-          <div class="points">
+        </form>
+        <form action="#">
+          <input type="hidden" name="slogan_id" value=1>
+          <input type="hidden" name="vote_type" value="down">
+          <button class="down" type="submit" name="submit">
+            <img src="img/downvote.gif" alt="downvote_image" />
+          </button>
+        </form>
+        <div class="points">
           {{this.votes}}
-          </div>
-        {{/each}}
         </div>
-
+        {{/each}}
+      </div>
         <div class="add-badge">
           <h3> Add a Badge: </h3>
           <form action="http://spa-badge-api.herokuapp.com/teachers/{{teacher.id}}/badges" id="addbadges">
@@ -66,9 +66,29 @@
             <input type="image" src="img/add_button.png" alt="Add Slogan" />
           </form>
         </div>
-
-      </form>
     </div>
   </div>
 </div>
 </script>
+
+<script id="newBadge" type="text/x-handlebars-template">
+  <div class="body">{{newBadge.phrase}}</div>
+  <div class="vote-on">
+    <form action="#">
+      <input type="hidden" name="slogan_id" value=1>
+      <input type="hidden" name="vote_type" value="up">
+      <button class="up" type="submit" name="submit">
+        <img src="img/upvote.gif" alt="upvote_image" />
+      </button>
+
+      <form action="#">
+        <input type="hidden" name="slogan_id" value=1>
+        <input type="hidden" name="vote_type" value="down">
+        <button class="down" type="submit" name="submit">
+          <img src="img/downvote.gif" alt="downvote_image" />
+        </button>
+      </form>
+      <div class="points">
+        {{newBadge.votes}}
+      </div>
+    </script>
